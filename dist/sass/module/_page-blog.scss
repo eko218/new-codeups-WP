@@ -1,0 +1,14 @@
+@use "global" as *;
+
+.blog-list__btn {
+    margin-top: rem(43);
+    text-align: center;
+}
+
+.page-blog__inner.common-fish::before {
+    top: -0.3%;
+    left: calc(50% - min(45vw, 38.75rem));
+    @include mq("md") {
+        top: -3.0%;
+    }
+}

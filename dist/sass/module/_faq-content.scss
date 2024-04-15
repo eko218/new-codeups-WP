@@ -1,0 +1,69 @@
+@use "global" as *;
+
+.faq-content__title {
+    position: relative;
+    font-size: rem(16);
+    font-weight: $regular;
+    line-height: 1.4375;
+    padding: rem(16);
+    cursor: pointer;
+    color: $white;
+    background-color: $green;
+    font-family: $third-font-family;
+    @include mq("md") {
+        font-size: rem(20);
+        line-height: 1.45;
+        padding: rem(25) rem(40);
+    }
+}
+
+.faq-content__title::before,
+.faq-content__title::after {
+    position: absolute;
+    top: 46%;
+    right: rem(15);
+    width: rem(28);
+    // display: block;
+    height: rem(1);
+    content: '';
+    background-color: $white;
+    // border-top: 2px solid $white;
+    // border-right: 2px solid $white;
+    transition: 0.3s transform, 0.3s opacity;
+    @include mq("md") {
+        width: rem(32);
+        right: rem(40);
+        top: 50%;
+    }
+}
+
+.faq-content__title::after {
+    transform: rotate(0deg);
+}
+
+.faq-content__title.is-active::after {
+    // top: 45%;
+    transform: rotate(90deg);
+}
+
+// .faq-content__title.is-active::after {
+//     opacity: 0;
+//     visibility:hidden
+// }
+
+.faq-content__text {
+    // display: none;
+    padding: rem(24) rem(16);
+    font-size: rem(16);
+    font-weight: $regular;
+    line-height: 1.4375;
+    color: $darkgreen;
+    font-family: $third-font-family;
+    // border: rem(1) solid $green;
+    // margin-top: rem(16);
+    @include mq("md") {
+        padding: rem(38);
+        margin-top: rem(18);
+        border: rem(1) solid $green;
+    }
+  }

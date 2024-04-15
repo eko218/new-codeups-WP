@@ -1,0 +1,83 @@
+@use "global" as *;
+
+.single-main {
+    @include mq("md") {
+        flex-direction: column;
+    }
+}
+
+.single-main__date {
+    font-size: rem(14);
+    font-weight: $regular;
+    font-family: $base-font-family;
+    color: $darkgreen;
+}
+
+.single-main__title {
+    font-size: rem(24);
+    line-height: 1.4583;
+    font-weight: $medium;
+    font-family: $third-font-family;
+    border-bottom: rem(1) solid $green;
+    padding-bottom: rem(5);
+    margin-top: rem(5);
+    @include mq("md") {
+        font-size: rem(32);
+        line-height: 1.4375;
+        padding-bottom: rem(5);
+        margin-top: 0;
+        padding-bottom: rem(2);
+    }
+}
+
+.single-main__img {
+    margin-top: rem(24);
+    @include mq("md") {
+        margin-top: rem(40);
+    }
+}
+
+.single-main__bottom p {
+    margin-top: rem(24);
+    @include mq("md") {
+        margin-top: rem(40);
+    }
+}
+
+.single-main__bottom figure {
+    margin-top: rem(24);
+    @include mq("md") {
+        margin-top: rem(40);
+    }
+}
+
+.single-main__bottom ul {
+    margin-top: rem(24);
+    @include mq("md") {
+        margin-top: rem(40);
+    }
+}
+
+.single-main__bottom li {
+    list-style: none;
+    position: relative;
+    font-size: rem(16);
+    font-weight: $regular;
+    line-height: 1.7;
+    font-family: $third-font-family;
+    color: $darkgreen;
+    // margin-left: rem(28);
+    padding-left: rem(28);
+}
+
+.single-main__bottom li::before {
+    content: url(../images/common/hitode-green.svg);
+    width: rem(18);
+    height: rem(18);
+    margin-right: rem(4);
+    position: absolute;
+    // left: rem(-28);
+    left: 0;
+    top: rem(2);
+    color: $lightblue;
+}

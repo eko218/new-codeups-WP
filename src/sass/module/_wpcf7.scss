@@ -1,0 +1,47 @@
+@use "global" as *;
+
+.wpcf7-spinner {
+    display: none;
+}
+
+.wpcf7-submit {
+    display: none;
+}
+
+.wpcf7-checkbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpcf7-list-item {
+    display: block;
+    margin: 0;
+  }
+  
+  //エラー表示
+  input.wpcf7-not-valid,
+  textarea.wpcf7-not-valid {
+    border: rem(1) solid $orange;
+    background: rgba(201, 72, 0, 0.2);
+  }
+  
+  input.wpcf7-not-valid::placeholder {
+    color: $white;
+  }
+  
+  .wpcf7-not-valid [type=checkbox] + span::before {
+    border: 1px solid $orange;
+    background: rgba(201, 72, 0, 0.2);
+  }
+  
+  //「入力してください」を非表示
+  .wpcf7-not-valid-tip {
+    display: none;
+  }
+  
+  .wpcf7 form.invalid .wpcf7-response-output {
+    border: none;
+    text-align: center;
+    color: $orange;
+    font-size: rem(14);
+  }

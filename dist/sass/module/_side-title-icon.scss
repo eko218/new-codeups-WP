@@ -1,0 +1,27 @@
+@use "global" as *;
+
+.side-title-icon {
+    font-size: rem(24);
+    font-weight: $regular;
+    font-family: $third-font-family;
+    line-height: 1.4583;
+    color: $darkgreen;
+    border-left: rem(8) solid $green;
+    padding-left: rem(74);
+    padding-top: rem(12);
+    padding-bottom: rem(2);
+    position: relative;
+}
+
+.side-title-icon::before {
+    position: absolute;
+    content: '';
+    background-image: url(../images/common/side-title-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: rem(50);
+    height: rem(50);
+    left: 6%;
+    top: -2%;
+}

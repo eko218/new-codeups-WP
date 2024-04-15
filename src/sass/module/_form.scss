@@ -1,0 +1,233 @@
+@use "global" as *;
+
+.form__item {
+    padding-bottom: rem(22);
+    margin-top: rem(25);
+    border-bottom: 1px dashed $green;
+    @include mq("md") {
+      margin-top: rem(39);
+      padding-bottom: rem(38);
+      display: flex;
+      align-items: start;
+    }
+  }
+  
+  .form__item:first-child {
+    margin-top: 0;
+  }
+  
+  .form__label {
+    display: flex;
+    align-items: center;
+    font-size: rem(16);
+    font-weight: $bold;
+    line-height: 1.4375;
+    font-family: $third-font-family;
+    @include mq("md") {
+      flex: 1;
+    }
+  }
+  
+  .form__label span {
+    margin-left: rem(8);
+    padding: rem(4.5) rem(16);
+    color: $white;
+    font-size: rem(12);
+    font-weight: $regular;
+    line-height: 1;
+    background-color: #c94800;
+    font-family: $third-font-family;
+  }
+  
+  .form__label span::first-letter {
+    letter-spacing: 0.4em;
+  }
+  
+  .form__input,
+  .form__check,
+  .form__select,
+  .form__textarea {
+    margin-top: rem(16);
+    @include mq("md") {
+      margin-top: 0;
+      flex: 0 0 rem(480);
+    }
+  }
+
+  .form__input input {
+    padding: rem(5.5) rem(15);
+    width: 100%;
+    font-size: rem(16);
+    font-weight: $regular;
+    line-height: 1;
+    border: 1px solid $green;
+    background-color: $white;
+  }
+  
+  .form__input input::placeholder {
+    color: $lightblue;
+    font-family: $third-font-family;
+  }
+
+  .form__check label {
+    display: block;
+  }
+  
+  .form__check label:not(:first-of-type) {
+    margin-top: rem(4);
+  }
+  
+  .form__check input {
+    display: none;
+  }
+  
+  .form__check input + span {
+    padding-left: rem(22);
+    display: inline-block;
+    position: relative;
+    font-size: rem(16);
+    font-weight: $regular;
+    line-height: calc(23 / 16);
+    cursor: pointer;
+  }
+  
+  .form__check input + span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: rem(14);
+    height: rem(14);
+    background-color: $white;
+    border: 1px solid $green;
+  }
+  
+  .form__check input + span::after {
+    margin: rem(-1) 0 0 rem(2);
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) rotate(-40deg);
+    width: rem(10);
+    height: rem(5);
+    border-bottom: 2px solid #c94800;
+    border-left: 2px solid #c94800;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .form__check input:checked + span::after {
+    opacity: 1;
+  }
+  
+
+  .form__select select {
+    padding: rem(8) rem(7);
+    width: 100%;
+    font-size: rem(12);
+    line-height: 1;
+    border: rem(1) solid $green;
+    background-image: url(../images/common/contact-arrow.png);
+    background-repeat: no-repeat;
+    background-size: rem(10);
+    background-position: top rem(10) right rem(9);
+  }
+  
+  .form__textarea textarea {
+    padding: rem(7.5) rem(15);
+    width: 100%;
+    height: rem(200);
+    font-size: rem(16);
+    font-weight: $regular;
+    line-height: calc(23 / 16);
+    border: 1px solid $green;
+    background-color: $white;
+  }
+  
+  .form__privacy {
+    margin: rem(43.5) auto 0;
+    width: max(calc(282 / 345 * 100%), rem(282));
+    @include mq("md") {
+      margin: rem(77.5) auto 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .form__privacy input {
+    display: none;
+  }
+  
+  .form__privacy input + span {
+    padding-left: rem(30);
+    display: inline-block;
+    position: relative;
+    font-size: rem(14);
+    font-weight: $regular;
+    line-height: calc(22 / 14);
+    cursor: pointer;
+    @include mq("md") {
+        padding-left: rem(32);
+    }
+  }
+
+  .form__privacy input + span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    transform: translateY(-50%);
+    width: rem(22);
+    height: rem(22);
+    background-color: $white;
+    border: 1px solid $green;
+    @include mq("md") {
+        left: rem(-4);
+        top: 43%;
+    }
+  }
+  
+  .form__privacy input + span::after {
+    margin: rem(-2) 0 0 rem(3);
+    content: "";
+    display: block;
+    position: absolute;
+    top: 23%;
+    left: 0;
+    transform: translateY(-50%) rotate(-40deg);
+    width: rem(16);
+    height: rem(9);
+    border-bottom: 2px solid #c94800;
+    border-left: 2px solid #c94800;
+    opacity: 0;
+    transition: opacity 0.2s;
+    @include mq("md") {
+        left: rem(-4);
+        top: 40%;
+    }
+  }
+  
+  .form__privacy input:checked + span::after {
+    opacity: 1;
+  }
+
+  .form__btn {
+    margin-top: rem(24);
+    text-align: center;
+    @include mq("md") {
+      margin-top: rem(37);
+    }
+  }
+
+.form__error {
+    font-size: rem(14);
+    font-weight: $regular;
+    font-family: $third-font-family;
+    line-height: 1.42857;
+    color: $orange;
+    text-align: center;
+}

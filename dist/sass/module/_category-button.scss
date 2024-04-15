@@ -1,0 +1,49 @@
+@use "global" as *;
+
+.category-button__list {
+    //  display: grid;
+    //  grid-template-columns: repeat(auto-fit, 10rem);
+    // // column-gap: rem(21);
+    //  row-gap: rem(16);
+    // max-width: rem(345);
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(16) min(6.0869565217%, rem(21));
+    @include mq("md") {
+        justify-content: flex-start;
+        // max-width: rem(744);
+        gap: rem(16) rem(32);
+        // margin-left: 0;
+    }
+}
+
+.category-button__list-item {
+    display: block;
+    font-size: rem(14);
+    font-weight: $regular;
+    font-family: $third-font-family;
+    line-height: 1;
+    color: $green;
+    border: rem(1) solid $green;
+    width: min(46.9565217391%, rem(162));
+    padding-top: rem(9);
+    padding-bottom: rem(9);
+    transition: 0.3s transform, 0.3s opacity;
+    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-button__list-item.is-active {
+    color: $white;
+    background-color: $green;
+}
+
+.category-button__list-item:hover {
+    color: $white;
+    background-color: $green;
+    cursor: pointer;
+}

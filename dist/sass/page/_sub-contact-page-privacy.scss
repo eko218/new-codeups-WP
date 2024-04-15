@@ -1,0 +1,8 @@
+@use "global" as *;
+
+.sub-contact-page-privacy {
+    margin-top: rem(100);
+    @include mq("md") {
+        margin-top: rem(136);
+    }
+}

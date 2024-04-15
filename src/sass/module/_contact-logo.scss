@@ -1,0 +1,9 @@
+@use "global" as *;
+
+.contact-logo img {
+    width: rem(174);
+    display: inline-block;
+    @include mq("md") {
+        width: rem(200);
+    }
+}

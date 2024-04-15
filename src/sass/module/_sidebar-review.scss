@@ -1,0 +1,42 @@
+@use "global" as *;
+
+.sidebar-review__item {
+    margin-top: rem(30);
+}
+
+.sidebar-review__img {
+    width: 100%;
+}
+
+.sidebar-review__img img {
+    aspect-ratio: 294 / 218;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-review__body {
+    margin-top: rem(16);
+}
+
+.sidebar-review__age {
+    font-size: rem(12);
+    font-weight: $regular;
+    font-family: $third-font-family;
+    line-height: 1.5;
+    color: $darkgreen;
+}
+
+.sidebar-review__title {
+    font-size: rem(24);
+    font-weight: $medium;
+    font-family: $third-font-family;
+    line-height: 1.4583;
+    color: $darkgreen;
+    margin-top: rem(8);
+}
+
+.sidebar-review__btn {
+    margin-top: rem(40);
+    text-align: center;
+}

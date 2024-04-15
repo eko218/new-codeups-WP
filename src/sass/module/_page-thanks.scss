@@ -1,0 +1,35 @@
+@use "global" as *;
+
+.page-thanks__inner.common-fish::before {
+    top: -13%;
+    @include mq("md") {
+        top: -54%;
+    }
+}
+
+.page-thanks__container {
+    @include mq("md") {
+        max-width: rem(672);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.page-thanks__title {
+    font-size: rem(16);
+    font-weight: $regular;
+    font-family: $third-font-family;
+    line-height: 1.125;
+    color: $darkgreen;
+    text-align: center;
+}
+
+.page-thanks__text {
+    text-align: center;
+    font-size: rem(16);
+    font-weight: $regular;
+    font-family: $third-font-family;
+    line-height: 1.4375;
+    color: $darkgreen;
+    margin-top: rem(40);
+}
