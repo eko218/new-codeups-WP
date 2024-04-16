@@ -203,7 +203,7 @@ function redirect_to_thanks_page() {
   echo <<< EOD
     <script>
       document.addEventListener( 'wpcf7mailsent', function( event ) {
-        location = '{$homeUrl}/thanks/';
+        location.href = '/thanks/';
       }, false );
     </script>
   EOD;
