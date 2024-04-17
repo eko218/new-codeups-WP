@@ -194,17 +194,3 @@ function custom_taxonomy_archive_posts_per_page($query) {
   
   // フィルターフックにカスタム関数を登録
   add_filter('body_class', 'custom_body_class');
-
-
-
-add_action('wp_footer', 'redirect_to_thanks_page');
-function redirect_to_thanks_page() {
-  $homeUrl = home_url();
-  echo <<< EOD
-    <script>
-      document.addEventListener( 'wpcf7mailsent', function( event ) {
-        location.href = '/thanks/';
-      }, false );
-    </script>
-  EOD;
-}
