@@ -65,8 +65,8 @@
                 <div class="pagenavi">
                     <?php wp_pagenavi(); ?>
                 </div>
-                <?php get_sidebar(); ?>
             </div>
+            <?php get_sidebar(); ?>
         </div>
     </div>
 </section>
