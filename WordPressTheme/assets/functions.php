@@ -191,6 +191,6 @@ function custom_taxonomy_archive_posts_per_page($query) {
     }
     return $classes;
   }
-  
+
   // フィルターフックにカスタム関数を登録
   add_filter('body_class', 'custom_body_class');
