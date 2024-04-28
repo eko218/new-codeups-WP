@@ -41,13 +41,19 @@
     <div class="archive-voice__inner inner common-fish">
         <div class="archive-voice__tab category-button">
             <ul class="category-button__list">
-                <li class="category-button__list-item is-active"><a href="<?php echo $campaign; ?>">ALL</a></li>
+                <li class="category-button__list-item is-active"><a href="<?php echo $voice; ?>">ALL</a></li>
                 <?php
-  $terms = get_terms('voice_category');
-  foreach ( $terms as $term ){
-    echo '<li class="category-button__list-item"><a href="'.get_term_link($term).'">'.esc_html($term->name).'</a></li>'; //タームのリンク
-  }
-?>
+                        $terms = get_terms('voice_category');
+                        foreach ($terms as $term):
+                            $term_link = get_term_link($term);
+                            $term_name = esc_html($term->name);
+                            $active_class = (is_tax('voice_category', $term->slug)) ? 'current' : '';
+                        ?>
+
+                <li class="category-button__list-item <?= $active_class ?>">
+                    <a href="<?= $term_link ?>"><?= $term_name ?></a>
+                </li>
+                <?php endforeach; ?>
             </ul>
         </div>
 
@@ -89,10 +95,6 @@
                 </a>
             </div>
             <?php endwhile; endif; ?>
-
-
-
-
         </div>
     </div>
     <!-- ページネーション -->

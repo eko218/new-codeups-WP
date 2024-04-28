@@ -39,15 +39,15 @@
 <section class="archive-voice sub-archive-voice">
     <div class="archive-voice__inner inner common-fish">
         <div class="archive-voice__tab category-button">
-            <div class="category-button__list">
-                <li class="category-button__list-item current"><a href="<?php echo $campaign; ?>">ALL</a></li>
+            <ul class="category-button__list">
+                <li class="category-button__list-item current"><a href="<?php echo $voice; ?>">ALL</a></li>
                 <?php
   $terms = get_terms('voice_category');
   foreach ( $terms as $term ){
     echo '<li class="category-button__list-item"><a href="'.get_term_link($term).'">'.esc_html($term->name).'</a></li>'; //タームのリンク
   }
 ?>
-            </div>
+            </ul>
         </div>
 
         <!-- archive-voice -->

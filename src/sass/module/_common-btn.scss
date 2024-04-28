@@ -17,8 +17,6 @@
     cursor: pointer;
 }
 
-
-
 // ボタンの影
 .common-btn::before {
     position: absolute;
@@ -31,6 +29,7 @@
     top: rem(4);
     z-index: -1;
 }
+
 
 // ボタンの矢印
 .common-btn__arrow::before {
@@ -165,12 +164,14 @@
 
 .common-btn.common-btn--reverse:hover .common-btn__arrow::after {
     background-color: $white;
-  }
+}
 
 .common-btn--reverse:hover .common-btn__arrow::before {
     background-color: $white;
-  }
+}
 
-  .common-btn input[type=submit] {
-     color: transparent;
-  }
+.common-btn input[type=submit] {
+     color: $white;
+     font-size: rem(14);
+}
+

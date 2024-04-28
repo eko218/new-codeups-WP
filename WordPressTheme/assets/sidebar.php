@@ -48,7 +48,7 @@
                 <?php $recent_query = new WP_Query(
             array(
               'post_type' => 'voice',
-              'posts_per_page' => 2,
+              'posts_per_page' => 1,
               'orderby' => 'date',
               'order' => 'DESC',
             )
@@ -84,7 +84,7 @@
                     <?php $recent_query = new WP_Query(
             array(
               'post_type' => 'campaign',
-              'posts_per_page' => 1,
+              'posts_per_page' => 2,
               'orderby' => 'date',
               'order' => 'DESC',
             )
@@ -123,25 +123,26 @@
                     <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
                 </div>
             </div>
-            <div class="sideber-archive sidebar-archive sub-sideber">
+            <div class="sideber-archive sidebar-archive sub-sidebar">
                 <h2 class="sidebar-archive__title side-title-icon">アーカイブ</h2>
                 <ul class="sidebar-archive__lists">
-                    <li class="sidebar-archive__list">
-                        <span class="sidebar-archive__year js-archive-button is-active">2023</span>
-                        <ul class="sidebar-archive__months">
-                            <li class="sidebar-archive__month"><a href="#">3月</a></li>
-                            <li class="sidebar-archive__month"><a href="#">2月</a></li>
-                            <li class="sidebar-archive__month"><a href="#">1月</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-archive__list">
-                        <span class="sidebar-archive__year js-archive-button">2022</span>
-                        <ul class="sidebar-archive__months">
-                            <li class="sidebar-archive__month"><a href="#">3月</a></li>
-                            <li class="sidebar-archive__month"><a href="#">2月</a></li>
-                            <li class="sidebar-archive__month"><a href="#">1月</a></li>
-                        </ul>
-                    </li>
+                    <?php
+        $years = get_years_with_posts();
+        foreach ($years as $year) {
+            $months = get_months_with_posts($year);
+            // その年に投稿がない場合はスキップ
+            if (empty($months)) {
+                continue;
+            }
+            echo '<li class="sidebar-archive__list">';
+            echo "<span class='sidebar-archive__year js-archive-button'>$year</span>";
+            echo '<ul class="sidebar-archive__months">';
+            foreach ($months as $month) {
+                echo "<li class='sidebar-archive__month'><a href='#'>$month</a></li>";
+            }
+            echo '</ul></li>';
+        }
+        ?>
                 </ul>
             </div>
         </div>

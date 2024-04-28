@@ -46,21 +46,26 @@
                     <div class="blog-cards__item blog-card">
                         <a href="<?php the_permalink(); ?>" class="blog-card__item">
                             <figure class="blog-card__img blog-card__img--sub">
+                                <?php if (has_post_thumbnail()): ?>
                                 <img src="<?php the_post_thumbnail_url('full'); ?>"
                                     alt="<?php the_title(); ?>のアイキャッチ画像">
+                                <?php else: ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/noimage.jpg"
+                                    alt="">
+                                <?php endif; ?>
                             </figure>
                             <div class="blog-card__info">
-                                <time class="blog-card__date" datetime="<?php the_time('c'); ?>"
-                                    class="blog-card__date"><?php the_time('Y.m.d'); ?>
-                                </time>
+                                <time class="blog-card__date"
+                                    datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
                                 <h3 class="blog-card__title"><?php the_title(); ?></h3>
                             </div>
                             <div class="blog-card__body">
-                                <div class="blog-card__text"><?php the_content(); ?></div>
+                                <div class="blog-card__text"><?php the_excerpt(); ?></div>
                             </div>
                         </a>
                     </div>
-                    <?php endwhile; endif; ?>
+                    <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="pagenavi">
                     <?php wp_pagenavi(); ?>

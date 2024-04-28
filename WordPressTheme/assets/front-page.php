@@ -21,45 +21,43 @@
         <div class="mv__wrap">
             <div class="swiper js-mv-swiper">
                 <div class="swiper-wrapper">
+                    <?php
+                    // PC用のスライダー画像を取得
+                    $pc_images = get_field('mv_img_pc');
+                    if ($pc_images) :
+                        foreach ($pc_images as $pc_image) :
+                            $pc_image_url = $pc_image['url'];
+                            $pc_image_alt = $pc_image['alt'];
+                    ?>
                     <div class="swiper-slide">
                         <div class="mv__slide-img">
-                            <picture>
-                                <source srcset="<?php echo get_theme_file_uri(); ?>/images/common/mv-pc1.jpg"
-                                    media="(min-width: 768px)">
-                                <img src="<?php echo get_theme_file_uri(); ?>/images/common/mv-sp1.jpg"
-                                    alt="ウミガメが泳いでいる画像">
-                            </picture>
+                            <img src="<?php echo esc_url($pc_image_url); ?>"
+                                alt="<?php echo esc_attr($pc_image_alt); ?>">
                         </div>
                     </div>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
+
+                    <?php
+                    // SP用のスライダー画像を取得
+                    $sp_images = get_field('mv_img_sp');
+                    if ($sp_images) :
+                        foreach ($sp_images as $sp_image) :
+                            $sp_image_url = $sp_image['url'];
+                            $sp_image_alt = $sp_image['alt'];
+                    ?>
                     <div class="swiper-slide">
                         <div class="mv__slide-img">
-                            <picture>
-                                <source srcset="<?php echo get_theme_file_uri(); ?>/images/common/mv-pc2.jpg"
-                                    media="(min-width: 768px)">
-                                <img src="<?php echo get_theme_file_uri(); ?>/images/common/mv-sp2.jpg"
-                                    alt="ウミガメを下から撮った画像">
-                            </picture>
+                            <img src="<?php echo esc_url($sp_image_url); ?>"
+                                alt="<?php echo esc_attr($sp_image_alt); ?>">
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="mv__slide-img">
-                            <picture>
-                                <source srcset="<?php echo get_theme_file_uri(); ?>/images/common/mv-pc3.jpg"
-                                    media="(min-width: 768px)">
-                                <img src="<?php echo get_theme_file_uri(); ?>/images/common/mv-sp3.jpg" alt="船と海の画像">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="mv__slide-img">
-                            <picture>
-                                <source srcset="<?php echo get_theme_file_uri(); ?>/images/common/mv-pc4.jpg"
-                                    media="(min-width: 768px)">
-                                <img src="<?php echo get_theme_file_uri(); ?>/images/common/mv-sp4.jpg"
-                                    alt="砂浜と綺麗な海の画像">
-                            </picture>
-                        </div>
-                    </div>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
                 </div>
             </div>
         </div>
@@ -69,6 +67,8 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- campaign -->
 <section id="campaign" class="campaign top-campaign">
@@ -209,7 +209,8 @@
             <div class="information__text-body">
                 <div class="information__text-block">
                     <h3 class="information__category">ライセンス講習</h3>
-                    <p class="information__text">当店はダイビングライセンス（Cカード）世界最大の教育機関PADIの「正規店」として店舗登録されています。<br>
+                    <p class="information__text">
+                        当店はダイビングライセンス（Cカード）世界最大の教育機関PADIの「正規店」として店舗登録されています。<br>
                         正規登録店として、安心安全に初めての方でも安心安全にライセンス取得をサポート致します。
                     </p>
                 </div>
@@ -239,7 +240,8 @@
                         <h3 class="blog-card__title">ライセンス取得</h3>
                     </div>
                     <div class="blog-card__body">
-                        <div class="blog-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
+                        <div class="blog-card__text">
+                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
                             ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</div>
                     </div>
                 </a>

@@ -5,7 +5,8 @@
 }
 
 // .wpcf7-submit {
-//     display: none;
+//     // display: none;
+//     background-color: $white;
 // }
 
 .wpcf7-checkbox {
@@ -17,7 +18,7 @@
     display: block;
     margin: 0;
   }
-  
+
   //エラー表示
   input.wpcf7-not-valid,
   textarea.wpcf7-not-valid {
