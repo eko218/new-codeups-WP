@@ -98,7 +98,7 @@
         </div>
     </div>
     <!-- ページネーション -->
-    <div class="-pagenavi">
+    <div class="pagenavi">
         <?php wp_pagenavi(); ?>
     </div>
     </div>
