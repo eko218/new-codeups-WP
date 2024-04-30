@@ -21,54 +21,37 @@
         <div class="mv__wrap">
             <div class="swiper js-mv-swiper">
                 <div class="swiper-wrapper">
+                    <?php for ($i = 1; $i <= 4; $i++) : ?>
                     <?php
-                    // PC用のスライダー画像を取得
-                    $pc_images = get_field('mv_img_pc');
-                    if ($pc_images) :
-                        foreach ($pc_images as $pc_image) :
-                            $pc_image_url = $pc_image['url'];
-                            $pc_image_alt = $pc_image['alt'];
-                    ?>
-                    <div class="swiper-slide">
-                        <div class="mv__slide-img">
-                            <img src="<?php echo esc_url($pc_image_url); ?>"
-                                alt="<?php echo esc_attr($pc_image_alt); ?>">
-                        </div>
-                    </div>
-                    <?php
-                        endforeach;
-                    endif;
-                    ?>
+                        // ページIDを取得する必要はありません
+                        // PC用の画像を取得
+                        $image_pc = get_field('mv_img_pc_' . $i); // フィールド名に $i を追加
+                        $image_sp = get_field('mv_img_sp_' . $i); // 同様に SP 用の画像も取得
 
-                    <?php
-                    // SP用のスライダー画像を取得
-                    $sp_images = get_field('mv_img_sp');
-                    if ($sp_images) :
-                        foreach ($sp_images as $sp_image) :
-                            $sp_image_url = $sp_image['url'];
-                            $sp_image_alt = $sp_image['alt'];
-                    ?>
+                        if ($image_pc) :
+                            $url_pc = esc_url($image_pc['url']);
+                            $alt_pc = esc_attr($image_pc['alt']); // $alt_pc を使用
+                        ?>
                     <div class="swiper-slide">
                         <div class="mv__slide-img">
-                            <img src="<?php echo esc_url($sp_image_url); ?>"
-                                alt="<?php echo esc_attr($sp_image_alt); ?>">
+                            <source srcset="<?php echo $url_pc; ?>" media="(min-width:768px)" />
+                            <!-- sourceタグでPC用画像を設定 -->
+                            <img src="<?php echo $url_sp ? esc_url($image_sp['url']) : $url_pc; ?>"
+                                alt="<?php echo $alt_pc; ?>" /> <!-- SP画像があればそれを、なければPC用画像を表示 -->
                         </div>
                     </div>
-                    <?php
-                        endforeach;
-                    endif;
-                    ?>
+                    <?php endif; ?>
+                    <?php endfor; ?>
                 </div>
             </div>
-        </div>
-        <div class="mv__header">
-            <h2 class="mv__maintitle">DIVING</h2>
-            <p class="mv__subtitle">into&nbsp;the&nbsp;ocean</p>
         </div>
     </div>
 </div>
 
-
+<div class="mv__header">
+    <h2 class="mv__maintitle">DIVING</h2>
+    <p class="mv__subtitle">into&nbsp;the&nbsp;ocean</p>
+</div>
 
 <!-- campaign -->
 <section id="campaign" class="campaign top-campaign">

@@ -196,8 +196,6 @@ function custom_taxonomy_archive_posts_per_page($query) {
   add_filter('body_class', 'custom_body_class');
 
 
-
-  
 // アーカイブ表示
 
 function get_years_with_posts() {
@@ -289,11 +287,6 @@ if( function_exists('acf_add_local_field_group') ):
 
  endif;
 
-
-
-
-
-
 // 人気記事
 function my_custom_popular_posts($post_id) {
   $count_key = 'cf_popular_posts';
@@ -316,19 +309,3 @@ function my_custom_track_posts($post_id) {
   my_custom_popular_posts($post_id);
 }
 add_action('wp_head', 'my_custom_track_posts');
-
-
-
-//ブログ記事のパンくずUncategorizedの表示を削除
-add_filter( 'bcn_after_fill', function ( $breadcrumb ) {
-    if ( count($breadcrumb->trail) > 0 ) {
-      for ( $i = 0; $i < count($breadcrumb->trail); $i++ ) {
-          if ( 'Uncategorized' == $breadcrumb->trail[$i]->get_title() ) {
-              $breadcrumb->trail[$i]->set_template( '' );
-          }
-      }
-  }
-  // カスタムセパレーターを設定します。ここでは「>」を使用します。
-  $breadcrumb->opt['separator'] = ' > ';
-  return $breadcrumb;
-} );

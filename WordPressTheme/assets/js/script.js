@@ -55,6 +55,18 @@ var swiper = new Swiper(".js-mv-swiper", {
 
   speed: 2000 // ２秒かけながら次の画像へ移動
 });
+// Swiper ライブラリを使用してスライダーを初期化するコード
+document.addEventListener('DOMContentLoaded', function () {
+  var swiper = new Swiper('.js-mv-swiper', {
+    loop: true,
+    effect: 'fade',
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+    speed: 2000
+  });
+});
 
 //  キャンペーンスライダー
 jQuery(function ($) {
