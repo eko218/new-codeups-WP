@@ -73,7 +73,8 @@
                 <?php endif; ?>
                 <?php wp_reset_postdata(); ?>
                 <div class="sidebar-review__btn">
-                    <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+                    <a href="<?php echo $voice ?>" class="common-btn"><span
+                            class="common-btn__arrow">View&nbsp;more</span></a>
                 </div>
             </div>
 
@@ -93,7 +94,6 @@
                     <?php if ($recent_query->have_posts()) : ?>
                     <?php while($recent_query->have_posts()) : ?>
                     <?php $recent_query->the_post(); ?>
-
 
                     <li class="sidebar-campaign__card sidebar-campaign-card">
                         <div class="sidebar-campaign-card__item">
@@ -117,10 +117,10 @@
                     <?php endwhile; ?>
                     <?php endif; ?>
                     <?php wp_reset_postdata(); ?>
-
                 </ul>
                 <div class="sidebar-campaign__btn">
-                    <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+                    <a href="<?php echo $campaign ?>" class="common-btn"><span
+                            class="common-btn__arrow">View&nbsp;more</span></a>
                 </div>
             </div>
             <div class="sideber-archive sidebar-archive sub-sidebar">

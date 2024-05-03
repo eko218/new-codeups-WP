@@ -142,7 +142,7 @@ function setPostViews($postID) {
         $count++;
         update_post_meta($postID, $count_key, $count);
     }
-  } 
+  }
 
 // カスタム投稿の表示件数
   function change_posts_per_page($query) {
@@ -219,73 +219,10 @@ function get_months_with_posts($year) {
 }
 
 
-//スライダーの投稿ページ設定
-add_action('init', 'slider_init');
-function slider_init(){
-    $labels = array(
-        'name' => _x('Slider', 'post type general name'),
-        'singular_name' => _x('Slider', 'post type singular name'),
-        'add_new' => _x('新規追加', 'Slider'),
-        'add_new_item' => __('新しくメニューを追加する'),
-        'edit_item' => __('スライダーを編集'),
-        'new_item' => __('新しいスライダー'),
-        'view_item' => __('スライダーを見る'),
-        'search_items' => __('スライダーを探す'),
-        'not_found' => __('スライダーがありません'),
-        'not_found_in_trash' => __('ゴミ箱にスライダーはありません'),
-        'parent_item_colon' => ''
-    );
-    $args = array(
-        'labels' => $labels,
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'query_var' => true,
-        'rewrite_withfront'=> true,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'hierarchical' => false,
-        'menu_position' => 5,
-        'menu_icon'   => 'dashicons-slides',
-        'show_in_rest' => false,
-        'supports' => array('title','editor','thumbnail','page-attributes'),
-        'has_archive' => false
-    );
-    register_post_type('slider',$args);
-}
 
-if( function_exists('acf_add_local_field_group') ):
 
-    acf_add_local_field_group(array(
-        'key' => 'group_slider_images',
-        'title' => 'Slider Images',
-        'fields' => array(
-            array(
-                'key' => 'field_slider_images',
-                'label' => 'Slider Images',
-                'name' => 'slider_images',
-                'type' => 'gallery',
-                'instructions' => 'Select images for the slider',
-                'required' => 1,
-                'preview_size' => 'thumbnail',
-                'library' => 'all',
-                'min' => 1,
-                'max' => 5, // Adjust maximum number of images as needed
-                'mime_types' => '',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'slider',
-                ),
-            ),
-        ),
-    ));
 
- endif;
+
 
 // 人気記事
 function my_custom_popular_posts($post_id) {
@@ -309,3 +246,39 @@ function my_custom_track_posts($post_id) {
   my_custom_popular_posts($post_id);
 }
 add_action('wp_head', 'my_custom_track_posts');
+
+
+//スライダーの投稿ページ設定
+add_action('init', 'slider_init');
+function slider_init(){
+$labels = array(
+'name' => _x('Slider', 'post type general name'),
+'singular_name' => _x('Slider', 'post type singular name'),
+'add_new' => _x('新規追加', 'Slider'),
+'add_new_item' => __('新しくメニューを追加する'),
+'edit_item' => __('スライダーを編集'),
+'new_item' => __('新しいスライダー'),
+'view_item' => __('スライダーを見る'),
+'search_items' => __('スライダーを探す'),
+'not_found' => __('スライダーがありません'),
+'not_found_in_trash' => __('ゴミ箱にスライダーはありません'),
+'parent_item_colon' => ''
+);
+$args = array(
+  'labels' => $labels,
+  'public' => true,
+  'publicly_queryable' => true,
+  'show_ui' => true,
+  'query_var' => true,
+  'rewrite_withfront'=> true,
+  'rewrite' => true,
+  'capability_type' => 'post',
+  'hierarchical' => false,
+  'menu_position' => 5,
+  'menu_icon'   => 'dashicons-slides',
+  'show_in_rest' => false,
+  'supports' => array('title','editor','thumbnail','page-attributes'),
+  'has_archive' => false
+  );
+  register_post_type('slider',$args);
+  }

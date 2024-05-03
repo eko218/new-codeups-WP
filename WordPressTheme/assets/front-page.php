@@ -21,37 +21,51 @@
         <div class="mv__wrap">
             <div class="swiper js-mv-swiper">
                 <div class="swiper-wrapper">
-                    <?php for ($i = 1; $i <= 4; $i++) : ?>
                     <?php
-                        // ページIDを取得する必要はありません
-                        // PC用の画像を取得
-                        $image_pc = get_field('mv_img_pc_' . $i); // フィールド名に $i を追加
-                        $image_sp = get_field('mv_img_sp_' . $i); // 同様に SP 用の画像も取得
+          $mv_images_posts = get_posts(array(
+              'post_type' => 'mv_images',
+              'posts_per_page' => -1,
+          ));
+        ?>
+                    <?
+        foreach ($mv_images_posts as $post) :
+            setup_postdata($post);
 
-                        if ($image_pc) :
-                            $url_pc = esc_url($image_pc['url']);
-                            $alt_pc = esc_attr($image_pc['alt']); // $alt_pc を使用
-                        ?>
+            // PC画像とSP画像の配列を取得
+            $image_sp = get_field('mv_pc');
+            $image_pc = get_field('mv_sp');
+
+            // 画像の数を取得（PCとSPで同じ数であることを想定）
+            $image_count = count($image_pc);
+
+            // PC画像とSP画像を対応させて出力
+            for ($i = 1; $i <= $image_count; $i++) {
+        ;?>
                     <div class="swiper-slide">
                         <div class="mv__slide-img">
-                            <source srcset="<?php echo $url_pc; ?>" media="(min-width:768px)" />
-                            <!-- sourceタグでPC用画像を設定 -->
-                            <img src="<?php echo $url_sp ? esc_url($image_sp['url']) : $url_pc; ?>"
-                                alt="<?php echo $alt_pc; ?>" /> <!-- SP画像があればそれを、なければPC用画像を表示 -->
+                            <picture>
+                                <source srcset="<?php echo  esc_url($image_pc['url']); ?>" media="(min-width:768px)" />
+                                <img src="<?php echo  esc_url($image_sp['url']); ?>"
+                                    alt="<?php echo  esc_attr($image_pc['alt']); ?>" />
+                            </picture>
                         </div>
                     </div>
-                    <?php endif; ?>
-                    <?php endfor; ?>
+                    <?  }
+        endforeach;
+        wp_reset_postdata();
+        ?>
                 </div>
             </div>
+        </div>
+        <div class="mv__header">
+            <h2 class="mv__maintitle">DIVING</h2>
+            <p class="mv__subtitle">into&nbsp;the&nbsp;ocean</p>
         </div>
     </div>
 </div>
 
-<div class="mv__header">
-    <h2 class="mv__maintitle">DIVING</h2>
-    <p class="mv__subtitle">into&nbsp;the&nbsp;ocean</p>
-</div>
+
+
 
 <!-- campaign -->
 <section id="campaign" class="campaign top-campaign">
@@ -78,8 +92,10 @@
                                 <p class="campaign-card__title">ライセンス取得</p>
                                 <p class="campaign-card__text">全部コミコミ&lpar;お一人様&rpar;</p>
                                 <div class="campaign-card__price">
-                                    <p class="campaign-card__price-sub">&yen;56&comma;000</p>
-                                    <p class="campaign-card__price-main">&yen;46&comma;000</p>
+                                    <p class="campaign-card__price-sub">&yen;56&comma;000
+                                    </p>
+                                    <p class="campaign-card__price-main">&yen;46&comma;000
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -94,8 +110,10 @@
                                 <p class="campaign-card__title">貸切体験ダイビング</p>
                                 <p class="campaign-card__text">全部コミコミ&lpar;お一人様&rpar;</p>
                                 <div class="campaign-card__price">
-                                    <p class="campaign-card__price-sub">&yen;24&comma;000</p>
-                                    <p class="campaign-card__price-main">&yen;18&comma;000</p>
+                                    <p class="campaign-card__price-sub">&yen;24&comma;000
+                                    </p>
+                                    <p class="campaign-card__price-main">&yen;18&comma;000
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -111,8 +129,10 @@
                                 <p class="campaign-card__title">ナイトダイビング</p>
                                 <p class="campaign-card__text">全部コミコミ&lpar;お一人様&rpar;</p>
                                 <div class="campaign-card__price">
-                                    <p class="campaign-card__price-sub">&yen;10&comma;000</p>
-                                    <p class="campaign-card__price-main">&yen;8&comma;000</p>
+                                    <p class="campaign-card__price-sub">&yen;10&comma;000
+                                    </p>
+                                    <p class="campaign-card__price-main">&yen;8&comma;000
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -128,8 +148,10 @@
                                 <p class="campaign-card__title">貸切ファンダイビング</p>
                                 <p class="campaign-card__text">全部コミコミ&lpar;お一人様&rpar;</p>
                                 <div class="campaign-card__price">
-                                    <p class="campaign-card__price-sub">&yen;20&comma;000</p>
-                                    <p class="campaign-card__price-main">&yen;16&comma;000</p>
+                                    <p class="campaign-card__price-sub">&yen;20&comma;000
+                                    </p>
+                                    <p class="campaign-card__price-main">&yen;16&comma;000
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +160,8 @@
             </div>
         </div>
         <div class="campaign__btn">
-            <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+            <a href="<?php echo $campaign ?>" class="common-btn"><span
+                    class="common-btn__arrow">View&nbsp;more</span></a>
         </div>
     </div>
 </section>
@@ -171,7 +194,8 @@
                     ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
                 </p>
                 <div class="aboutus__btn">
-                    <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+                    <a href="<?php echo $about ?>" class="common-btn"><span
+                            class="common-btn__arrow">View&nbsp;more</span></a>
                 </div>
             </div>
         </div>
@@ -198,7 +222,8 @@
                     </p>
                 </div>
                 <div class="information__btn">
-                    <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+                    <a href="<?php echo $information ?>" class="common-btn"><span
+                            class="common-btn__arrow">View&nbsp;more</span></a>
                 </div>
             </div>
         </div>
@@ -265,7 +290,7 @@
             </div>
         </div>
         <div class="blog__btn">
-            <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+            <a href="<?php echo $blog ?>" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
         </div>
     </div>
 </section>
@@ -331,7 +356,7 @@
             </div>
         </div>
         <div class="voice__btn">
-            <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+            <a href="<?php echo $voice ?>" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
         </div>
     </div>
 </section>
@@ -424,7 +449,7 @@
             </div>
         </div>
         <div class="price__btn">
-            <a href="#" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
+            <a href="<?php echo $price ?>" class="common-btn"><span class="common-btn__arrow">View&nbsp;more</span></a>
         </div>
     </div>
 </section>
